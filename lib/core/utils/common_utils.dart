@@ -3,13 +3,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 /// Shows a snackbar
 void showSnackBar(
-    {required BuildContext context,
-      required String content,
-      required bool success}) {
+    BuildContext context,{
+      required String message,
+       bool success = false}) {
   if (!context.mounted) return;
   final snackBar = SnackBar(
     content: Text(
-      content,
+      message,
       style: const TextStyle(color: Colors.white),
     ),
     backgroundColor: success ? Colors.green : Colors.red,

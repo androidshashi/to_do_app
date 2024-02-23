@@ -53,6 +53,15 @@ dependencies:
   # functional programming
   fpdart: any
 
+  # loader
+  loader_overlay: any
+
+  #fonts
+  google_fonts: any
+
+  # screen utils
+  flutter_screenutil: any
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
