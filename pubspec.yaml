@@ -62,6 +62,9 @@ dependencies:
   # screen utils
   flutter_screenutil: any
 
+  #
+  gap: any
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

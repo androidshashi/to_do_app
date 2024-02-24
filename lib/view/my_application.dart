@@ -5,6 +5,7 @@ import 'package:to_do_app/core/constants/app_strings.dart';
 import 'package:to_do_app/core/theme/app_theme.dart';
 import 'package:to_do_app/core/utils/extensions/color_extensions.dart';
 import 'package:to_do_app/core/utils/extensions/extensions.dart';
+import 'package:to_do_app/view/signup_scrren.dart';
 import 'package:to_do_app/view/splash_screen.dart';
 
 /// This is the main widget from where the app will start
@@ -27,6 +28,7 @@ class MyApplication extends StatelessWidget {
               title: AppStrings.appName,
               theme: AppTheme.light(context),
               darkTheme: AppTheme.dark(context),
+              home: child,
             ),
           ),
           child: const SplashScreen(),

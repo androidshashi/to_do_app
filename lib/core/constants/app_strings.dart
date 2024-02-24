@@ -45,4 +45,6 @@ class AppStrings {
   static const String signup = "Signup";
 
   static var appName = "TO DO APP";
+
+  static String homeScreen = "Home Screen";
 }

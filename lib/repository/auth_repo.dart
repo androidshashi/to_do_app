@@ -55,7 +55,6 @@ class AuthRepo {
       } else if (e.code == 'wrong-password') {
         left('Wrong password provided for that user.');
       }
-
       return left(e.toString());
     } catch (e) {
       return left(e.toString());

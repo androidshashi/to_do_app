@@ -2,13 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'package:provider/provider.dart';
 import 'package:to_do_app/core/utils/common_utils.dart';
 import 'package:to_do_app/core/utils/extensions/extensions.dart';
 import 'package:to_do_app/core/utils/service_locator.dart';
 import 'package:to_do_app/repository/auth_repo.dart';
 import 'package:to_do_app/view/home_screen.dart';
+import 'package:to_do_app/viewmodel/home_viewmodel.dart';
 
-class SignupViewModel extends ChangeNotifier {
+class LoginViewModel extends ChangeNotifier {
   final AuthRepo _repo = locator<AuthRepo>();
 
   TextEditingController emailController = TextEditingController();
@@ -16,21 +18,15 @@ class SignupViewModel extends ChangeNotifier {
   TextEditingController confirmPasswordController = TextEditingController();
 
   bool passwordVisibility = true;
-  bool confirmPasswordVisibility = true;
 
   void togglePasswordVisibility() {
     passwordVisibility = !passwordVisibility;
     notifyListeners();
   }
 
-  void toggleConfirmPasswordVisibility() {
-    confirmPasswordVisibility = !confirmPasswordVisibility;
-    notifyListeners();
-  }
-
-  Future<void> createUserWithEmailAndPassword(BuildContext context) async {
+  Future<void> signInWithEmailAndPassword(BuildContext context) async {
     context.loaderOverlay.show();
-    final response = await _repo.createUserWithEmailAndPassword(
+    final response = await _repo.signInWithEmailAndPassword(
         email: emailController.text.trim(),
         password: passwordController.text.trim());
     context.loaderOverlay.hide();
@@ -41,7 +37,10 @@ class SignupViewModel extends ChangeNotifier {
       );
     }, (credentials) {
       // go to home screen
-      context.to(screen: const HomeScreen());
+      context.to(screen: ChangeNotifierProvider(
+        create: (BuildContext context) => HomeViewModel(),
+        child: const HomeScreen(),
+      ));
     });
   }
 }
